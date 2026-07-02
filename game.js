@@ -536,7 +536,7 @@ window.addEventListener('keyup', (e) => {
     }
 });
 
-canvas.addEventListener('click', () => {
+function handleScreenTap() {
     initAudio();
     if (gameState === 'START' || gameState === 'GAMEOVER') {
         if (isHellMode) {
@@ -563,7 +563,10 @@ canvas.addEventListener('click', () => {
         launchTime = Date.now();
         playPowerUpSound();
     }
-});
+}
+
+canvas.addEventListener('click', handleScreenTap);
+canvas.addEventListener('touchend', handleScreenTap);
 
 // 터치 및 마우스 이벤트 리스너 추가 (모바일 패들 이동 지원)
 function handlePointerMove(e) {
